@@ -6,7 +6,18 @@ void Copia::ciao(){
 Copia::Copia(char in[], char out[]){
 	this->in = in;
 	this->out = out;
-	this->valida();
+}
+bool Copia::superCopia(){
+	if(!this->valida()){
+		return false;
+	}
+	//proviamo ad aprire.
+	FILE* f = fopen(this->in, "r");
+	if (f == NULL){
+		cerr << "Errore numero " << ERRNO << endl;
+		return false;
+	}
+	fclose(f);
 }
 
 bool Copia::valida(){
@@ -31,6 +42,5 @@ bool Copia::valida(){
 			return false;
 		}
 	}
-	
 	return true;
 }
