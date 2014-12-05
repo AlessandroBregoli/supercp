@@ -35,6 +35,7 @@ bool Copia::superCopia(){
 		this->bufferone = (char*) malloc(sizeof(char)*this->dimBufferone);
 		fread(this->bufferone, (this->offsetFile - this->dimBufferone), this->offsetFile, input);
 		fwrite(this->bufferone, sizeof(char), this->dimBufferone, output);
+		free(this->bufferone);
 	}
 	fclose(input);
 	fclose(output);
