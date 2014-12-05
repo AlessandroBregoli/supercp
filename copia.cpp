@@ -22,18 +22,10 @@ bool Copia::superCopia(){
 		//TODO estrapolare il nome dell'input e aggiungerlo all'output
 	}
 	FILE* output = fopen(this->out, "a");
-	this->offsetFile = 1;
 	this->bufferone = (char*) malloc(sizeof(char)*this->DIMBUFFER);
-	while((this->dimFile -this->offsetFile) > 0){
-		if((this->dimFile - this->offsetFile- this->DIMBUFFER)>0){
-			this->offsetFile += this->DIMBUFFER;
-			this->dimBufferone = this->DIMBUFFER;
-		}
-		else{
-			this->dimBufferone = (this->dimFile - this->offsetFile);
-			this->offsetFile = this->dimFile;
-		}
-		fread(this->bufferone, sizeof(char), this->dimBufferone, input);
+	this->dimBufferone = this->DIMBUFFER;
+	while(this->dimBufferone > 0){		
+		this->dimBufferone = fread(this->bufferone, sizeof(char), this->dimBufferone, input);
 		fwrite(this->bufferone, sizeof(char), this->dimBufferone, output);		
 	}
 	free(this->bufferone);

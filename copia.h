@@ -8,7 +8,6 @@ class Copia{
 		char* in;
 		char* out;
 		long dimFile;
-		long offsetFile;
 		bool outIsCartella;
 		bool valida();		
 		char* bufferone;			
