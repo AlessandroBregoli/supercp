@@ -7,9 +7,9 @@ class Copia{
 	private:
 		char* in;
 		char* out;
-		long dimFile;
+		size_t dimFile;
 		bool outIsCartella;
 		bool valida();		
 		char* bufferone;			
-		size_t dimBufferone;
+		long dimBufferone;
 };
