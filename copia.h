@@ -11,5 +11,5 @@ class Copia{
 		bool outIsCartella;
 		bool valida();		
 		char* bufferone;			
-		long dimBufferone;
+		size_t dimBufferone;
 };
