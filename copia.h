@@ -3,12 +3,14 @@ class Copia{
 		void ciao();
 		Copia(char in[], char out[]);
 		bool superCopia();
-		const int dimBuffer = 4096;
+		long DIMBUFFER;
 	private:
 		char* in;
 		char* out;
-		int dimFile;
+		long dimFile;
+		long offsetFile;
 		bool outIsCartella;
-		bool valida();
-		unsigned char* bufferone;
+		bool valida();		
+		char* bufferone;			
+		long dimBufferone;
 };

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <sys/stat.h>
+#include <stdio.h>
+#include <stdlib.h>
 using namespace std;
 #include "copia.cpp"
 int main(int argc, char* argv[]){
@@ -11,5 +13,6 @@ int main(int argc, char* argv[]){
 		//cout<<argv[i]<<endl;
 	}
 	Copia c(argv[1],argv[2]);
+	c.superCopia();
 	return 0;
 }
