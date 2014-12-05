@@ -33,7 +33,7 @@ bool Copia::superCopia(){
 			this->dimBufferone = (this->dimFile - this->offsetFile);
 			this->offsetFile = this->dimFile;
 		}
-		fread(this->bufferone, (this->offsetFile - this->dimBufferone), this->offsetFile, input);
+		fread(this->bufferone, sizeof(char), this->dimBufferone, input);
 		fwrite(this->bufferone, sizeof(char), this->dimBufferone, output);		
 	}
 	free(this->bufferone);
