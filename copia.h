@@ -3,7 +3,7 @@ class Copia{
 		void ciao();
 		Copia(char in[], char out[]);
 		bool superCopia();
-		long DIMBUFFER;
+		size_t DIMBUFFER;
 	private:
 		char* in;
 		char* out;
@@ -11,5 +11,5 @@ class Copia{
 		bool outIsCartella;
 		bool valida();		
 		char* bufferone;			
-		long dimBufferone;
+		size_t dimBufferone;
 };

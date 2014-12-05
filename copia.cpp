@@ -15,23 +15,39 @@ bool Copia::superCopia(){
 	//proviamo ad aprire.
 	FILE* input = fopen(this->in, "r");
 	if (input == NULL){
-		cerr << "Errore" << endl;
+		cerr << "Errore nella lettura di " << this->in << endl;
 		return false;
 	}
 	if(this->outIsCartella){	
 		//TODO estrapolare il nome dell'input e aggiungerlo all'output
 	}
 	FILE* output = fopen(this->out, "a");
+	
+	bool ritorno = true;
+	
 	this->bufferone = (char*) malloc(sizeof(char)*this->DIMBUFFER);
+	if(this->bufferone == NULL){
+		cerr << "Errore nell'allocare la memoria per il buffer." << endl;
+		return false;
+	}
 	this->dimBufferone = this->DIMBUFFER;
 	while(this->dimBufferone > 0){		
 		this->dimBufferone = fread(this->bufferone, sizeof(char), this->dimBufferone, input);
-		fwrite(this->bufferone, sizeof(char), this->dimBufferone, output);		
+		if(this->dimBufferone == 0 && !feof(input)){
+			ritorno = false;
+			cerr << "File di input inaccessibile " << endl;
+			break;
+		}
+		if(fwrite(this->bufferone, sizeof(char), this->dimBufferone, output) != this->dimBufferone){
+			ritorno = false;
+			cerr << "File di destinazione inaccessibile." << endl;
+			break;
+		}
 	}
 	free(this->bufferone);
 	fclose(input);
 	fclose(output);
-	return true;
+	return ritorno;
 }
 
 bool Copia::valida(){
