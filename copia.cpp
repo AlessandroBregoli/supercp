@@ -12,6 +12,7 @@ bool Copia::superCopia(){
 	if(!this->valida()){
 		return false;
 	}
+	Barra b(100);
 	//proviamo ad aprire.
 	FILE* input = fopen(this->in, "r");
 	if (input == NULL){
@@ -31,6 +32,7 @@ bool Copia::superCopia(){
 		return false;
 	}
 	this->dimBufferone = this->DIMBUFFER;
+	size_t tmp = 0;
 	while(this->dimBufferone > 0){		
 		this->dimBufferone = fread(this->bufferone, sizeof(char), this->dimBufferone, input);
 		if(this->dimBufferone == 0 && !feof(input)){
@@ -43,6 +45,8 @@ bool Copia::superCopia(){
 			cerr << "File di destinazione inaccessibile." << endl;
 			break;
 		}
+		tmp++;
+		b.change_state((int) (tmp*(100)*this->DIMBUFFER/this->dimFile));
 	}
 	free(this->bufferone);
 	fclose(input);

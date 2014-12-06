@@ -2,7 +2,9 @@
 #include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/ioctl.h>
 using namespace std;
+#include "barra.cpp"
 #include "copia.cpp"
 int main(int argc, char* argv[]){
 	if(argc < 3){
