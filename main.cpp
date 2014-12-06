@@ -16,5 +16,6 @@ int main(int argc, char* argv[]){
 	}
 	Copia c(argv[1],argv[2]);
 	c.superCopia();
+	cout << endl;
 	return 0;
 }
